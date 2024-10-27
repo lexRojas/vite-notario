@@ -1,0 +1,120 @@
+/* Estilos para el modal */
+.modal {
+  display: block; /* Mostrar modal */
+  position: fixed;
+  z-index: 1000; /* Asegura que esté encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px; /* Ancho máximo */
+  max-height: 90%; /* Altura máxima */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.modal-menssage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+  margin: auto; /* Centrado vertical y horizontal */
+  padding: 5px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.modal-menssage img {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.modal-menssage span {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(27, 48, 6);
+}
+
+/* Estilos para la tabla */
+table {
+  border-collapse: collapse;
+}
+
+@media (max-width: 500px) {
+ table td, 
+ table th {
+  font-size: x-small;
+ }
+}
+
+table th,
+table td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  z-index: 0;
+}
+
+/* Hover para las filas */
+table tbody tr:hover {
+  background-color: #5280d4a9;
+  cursor: pointer;
+}
+
+/* Filas seleccionables */
+table tbody tr.selected {
+  background-color: #5280d4a9; /* Color para la fila seleccionada */
+}
+
+.tabla-head {
+  position: sticky;
+  top: 0; /* Fija los encabezados en la parte superior cuando se desplaza */
+  background-color: #fff; /* Color de fondo para el encabezado */
+  z-index: 1;
+}
+
+.browser-grid {
+  display: grid;
+  grid-template-areas:
+    "panel1"
+    "panel2";
+  gap: 5px;
+  max-height: 90%;
+}
+
+.panel1 {
+  grid-area: panel1;
+  display: flex;
+  justify-content: end;
+}
+
+.panel1 button {
+  display: flex;
+  align-items: end;
+  background-color: rgb(9, 9, 83);
+  padding: 5px 15px;
+  font-size: large;
+  color: aliceblue;
+}
+
+.panel2 {
+  grid-area: panel2;
+  overflow: auto;
+  max-height: 70vh;
+}

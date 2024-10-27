@@ -1,0 +1,615 @@
+//Variables Generales
+
+$font-family: Arial, Helvetica, sans-serif;
+$font-size: 0.95rem;
+
+$color_text_label: darkblue;
+$color_text_label_hover: rgb(255, 238, 0);
+
+$color_text_h1: darkred;
+$color_background_card: rgb(231, 225, 213) ;
+$color_button: rgb(20, 20, 59);
+$color_button_texto: white;
+$color_button_hover: rgb(39, 39, 95);
+
+$color_border_input: rgb(146, 146, 146);
+$color_border_input_hover: rgb(2, 27, 255);
+$color_background_input: rgb(241, 241, 192);
+
+$color_border_table: rgb(80, 80, 80);
+
+//Animaciones
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9); /* Halo inicial */
+  }
+  5% {
+    transform: scale(0.92);
+  }
+  17% {
+    transform: scale(0.9);
+  }
+  25% {
+    transform: scale(0.96);
+  }
+}
+
+//Bases de estilos 
+
+%card_base {
+  width: clamp(10dvw,30dvw,90dvw);
+  display: flex;
+  
+  flex-direction: column;
+  margin: auto;
+  background: $color_background_card;
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.37);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  justify-content: center;
+  overflow: auto;
+}
+
+
+@media (width <= 400px) {
+  %card_base {
+    width: 100%
+    
+  }
+    
+}
+
+
+%input-group-base {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  color: $color_text_label;
+  flex-direction: column;
+  flex-basis: 50px;
+  
+  padding: 0.2rem 1rem;
+}
+
+%input-base {
+  border: 1px solid $color_border_input;
+  background-color: $color_background_input;
+  border-radius: 0.4rem;
+  min-height: 2rem;
+  text-indent: 5px;
+}
+
+%input-base:hover {
+  border-color: $color_border_input_hover;
+}
+
+%input-base:focus {
+  outline: none;
+}
+
+%card_header-base {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: $color_text_label;
+  padding-top: 1rem;
+}
+
+%card_body-base {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  max-width: 100%;
+}
+
+%card__button-panel-base {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-width: 100%;
+  padding: 1.5rem;
+  gap: 0.5rem;
+}
+
+%card__button-base {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 5px 0px;
+  flex-basis: 1rem;
+  border-radius: 2px;
+  background-color: $color_button;
+  color: $color_button_texto;
+  min-height: 4rem;
+
+  &:hover {
+    background-color: $color_button_hover;
+    color: $color_text_label_hover;
+    font-size: 110%;
+    cursor: pointer;
+  }
+}
+
+// cuerpo general
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  font-size: $font-size;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../images/justicia.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 10px;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.534);
+  min-height: 100dvh;
+  min-width: 100dvw;
+  width: 100dvw;
+  height: 100dvh;
+  justify-items: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+/*-------------------------
+BLOQUE: CARD     
+-------------------------*/
+.card {
+  @extend %card_base;
+  &__input-group {
+    @extend %input-group-base;
+    input {
+      @extend %input-base;
+    }
+
+    select {
+      @extend %input-base;
+    }
+
+    textarea {
+      @extend %input-base;
+      padding: 10px 5px;
+    }
+
+    &__searchTextField {
+      display: flex;
+      flex-direction: row;
+
+      input {
+        @extend %input-base;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-left: 0;
+        width: 80%;
+      }
+      button {
+        background-color: $color_button;
+        color: $color_text_label;
+        padding: 0px;
+        margin-left: 0px;
+        border-top-right-radius: 0.4rem;
+        border-bottom-right-radius: 0.4rem;
+
+        img {
+          height: 75%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      button:hover {
+        background-color: $color_button_hover;
+        color: $color_text_label_hover;
+      }
+    }
+  }
+
+  &__header {
+    @extend %card_header-base;
+    &--message {
+      flex-direction: column;
+    }
+  }
+
+  &__body {
+    @extend %card_body-base;
+    &--calculator {
+      flex-direction: column;
+    }
+  }
+
+  &__button-panel {
+    @extend %card__button-panel-base;
+    &__button {
+      @extend %card__button-base;
+    }
+  }
+
+  // MODIFICADOR --LOGIN
+  &--login {
+    // max-height: clamp(50dvh,70dvh,100dvh);
+    &__header {
+      img {
+        margin: auto;
+        width: clamp(10%,35%,50%);
+        animation: heartbeat 1s infinite;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+      }
+    }
+
+    &__body {
+      max-width: 100%;
+      flex-direction: column;
+    }
+  }
+
+  // MODIFICADOR --MENU
+  &--menu {
+    max-height: 80dvh;
+
+    &__body {
+      max-width: 40rem;
+    }
+    &__menu-item {
+      width: 7rem;
+      height: 7rem;
+      margin: 0.6rem;
+      text-align: center;
+      span {
+        color: $color_text_label;
+        font-weight: bold;
+      }
+      img {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      &:hover {
+        color: $color_text_label_hover;
+      }
+    }
+  }
+  // MODIFICADOR --MENU
+
+  &--calculator {
+    max-height: 75dvh;
+    max-width: 25rem;
+  }
+
+  &--form-indice {
+    
+    max-width: 35rem;
+    overflow-y: auto;
+
+    &__body {
+      &__form-layout {
+        
+        display: grid;
+        grid-template-columns: repeat(3, minmax(50px, 1fr));
+        gap: 2px 2px;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "tomo blank boton_load_index"
+          "escritura blank ."
+          "folios folios folios"
+          "lugar lugar lugar"
+          "fecha fecha firmas"
+          "hora minutos blank2"
+          "partes partes partes"
+          "contrato contrato contrato"
+          "entero tomo_reg asiento_reg";
+
+        .folios {
+          display: grid;
+          grid-template-columns: 20% 25% 20% 25%;
+          grid-template-rows: auto;
+          grid-template-areas: "folio_num_inicio folio_fv_inicio folio_num_final folio_fv_final";
+          grid-area: folios;
+          justify-content: space-between;
+        }
+
+        @media (max-width: 500px) {
+          .folios {
+            grid-auto-flow: row;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "folio_num_inicio"
+              "folio_fv_inicio"
+              "folio_num_final"
+              "folio_fv_final";
+          }
+        }
+
+        .blank {
+          grid-area: blank;
+        }
+
+        .tomo {
+          grid-area: tomo;
+        }
+
+        .escritura {
+          grid-area: escritura;
+          display: flex;
+          width: 100%;
+        }
+
+        .folio_num_inicio {
+          grid-area: folio_num_inicio;
+        }
+
+        .folio_num_final {
+          grid-area: folio_num_final;
+        }
+
+        .folio_fv_inicio {
+          grid-area: folio_fv_inicio;
+        }
+
+        .folio_fv_final {
+          grid-area: folio_fv_final;
+        }
+
+        .lugar {
+          grid-area: lugar;
+        }
+
+        .fecha {
+          grid-area: fecha;
+        }
+
+        .firmas_frm {
+          grid-area: firmas;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .hora {
+          grid-area: hora;
+        }
+        .minutos {
+          grid-area: minutos;
+        }
+
+        .partes {
+          grid-area: partes;
+        }
+
+        .contrato {
+          grid-area: contrato;
+        }
+
+        .entero {
+          grid-area: entero;
+        }
+
+        .tomo_reg{
+          grid-area: tomo_reg;  
+        } 
+        .asiento_reg{
+          grid-area: asiento_reg;  
+        }
+
+        .form__errorLabel {
+          color: red;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+}
+
+/*-------------------------
+BLOQUE: REPORTE      
+-------------------------*/
+
+.report-container {
+  height: 100dvh;
+  width: 100dvw;
+  font-size: 5px;
+  background-color: white;
+
+  &__logo-container {
+    float: right;
+    position: relative;
+    top: 15px;
+    left: -80px;
+    right: 65px;
+    width: 90px;
+    height: 100px;
+    img {
+      height: 95%;
+    }
+  }
+
+  &__encabezado {
+    text-align: center;
+    padding-top: 30px;
+    h2 {
+      font-size: large;
+    }
+    div {
+      display: flex;
+      width: 90%;
+      margin: auto;
+      justify-content: space-between;
+      p {
+        display: inline;
+        width: 100px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    width: 90%;
+    flex-direction: row;
+    justify-content: flex-end;
+    .firmas {
+      display: block;
+      width: 200px;
+      text-align: center;
+    }
+    .linea {
+      background-color: #000;
+      height: 2px;
+      width: 200px;
+    }
+  }
+        
+
+}
+
+/*-------------------------
+BLOQUE: TABLA DEL INDICE REPORTE     
+-------------------------*/
+
+.report-table {
+  width: 100%;
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin: auto;
+
+  thead {
+    background-color: rgb(255, 251, 0);
+  }
+
+  th {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #000;
+    border-collapse: collapse;
+  }
+  td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #000;
+    border-collapse: collapse;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(240, 242, 243);
+  }
+
+  &--col-170px {
+    width: 170px;
+  }
+
+  &--col-300px {
+    width: 300px;
+  }
+
+  &--col-600px {
+    width: 680px;
+  }
+
+  &__nocartule-title {
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+}
+
+/*-------------------------
+BLOQUE: TABLA DE VER TARIFAS     
+-------------------------*/
+.table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden; /* Ensures that the table corners are properly rounded */
+  border: 1px solid $color_border_table;
+
+  thead {
+    background-color: rgb(85, 47, 223);
+    color: antiquewhite;
+  }
+
+  th {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid $color_border_table;
+    border-collapse: collapse;
+  }
+
+  td {
+    vertical-align: middle;
+    border: 1px solid $color_border_table;
+    border-collapse: collapse;
+  }
+
+  tbody tr {
+    background-color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgba(109, 148, 167, 0.767);
+  }
+
+  &--text-center {
+    text-align: center;
+  }
+
+  &--text-right {
+    text-align: right;
+  }
+
+  &--text-left {
+    text-align: left;
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: auto;
+  }
+}
+
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  footer {
+    display: none;
+  }
+  h1 {
+    font-size: medium;
+  }
+  h2 {
+    font-size: smaller;
+  }
+}
+
+@page {
+  margin: 1.5cm;
+  size: 8.5in 13in landscase;
+}
