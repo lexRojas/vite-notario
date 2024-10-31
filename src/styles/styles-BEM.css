@@ -33,7 +33,7 @@
     width: 100%;
   }
 }
-.card__input-group {
+.card--buscador__input-group, .card__input-group {
   display: flex;
   flex-grow: 1;
   flex-shrink: 1;
@@ -43,7 +43,7 @@
   padding: 0.2rem 1rem;
 }
 
-.card__input-group__searchTextField input, .card__input-group textarea, .card__input-group select, .card__input-group input {
+.card--buscador__input-group input, .card__input-group__searchTextField input, .card__input-group textarea, .card__input-group select, .card__input-group input {
   border: 1px solid rgb(146, 146, 146);
   background-color: rgb(241, 241, 192);
   border-radius: 0.4rem;
@@ -51,11 +51,11 @@
   text-indent: 5px;
 }
 
-.card__input-group__searchTextField input:hover, .card__input-group textarea:hover, .card__input-group select:hover, .card__input-group input:hover {
+.card--buscador__input-group input:hover, .card__input-group__searchTextField input:hover, .card__input-group textarea:hover, .card__input-group select:hover, .card__input-group input:hover {
   border-color: rgb(2, 27, 255);
 }
 
-.card__input-group__searchTextField input:focus, .card__input-group textarea:focus, .card__input-group select:focus, .card__input-group input:focus {
+.card--buscador__input-group input:focus, .card__input-group__searchTextField input:focus, .card__input-group textarea:focus, .card__input-group select:focus, .card__input-group input:focus {
   outline: none;
 }
 
@@ -180,7 +180,7 @@ BLOQUE: CARD
   margin: auto;
   width: 35%;
   animation: heartbeat 1s infinite;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
 .card--login__body {
   max-width: 100%;
@@ -298,7 +298,13 @@ BLOQUE: CARD
   color: red;
   margin-top: 2px;
 }
-
+.card--buscador__body {
+  max-height: 60dvh;
+  overflow-y: scroll;
+}
+.card--buscador__input-group {
+  width: 10rem;
+}
 /*-------------------------
 BLOQUE: REPORTE      
 -------------------------*/
@@ -405,7 +411,7 @@ BLOQUE: TABLA DE VER TARIFAS
   border-collapse: collapse;
   margin: 1rem auto;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden; /* Ensures that the table corners are properly rounded */
   border: 1px solid rgb(80, 80, 80);
 }

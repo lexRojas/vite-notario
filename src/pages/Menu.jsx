@@ -2,6 +2,9 @@ import React from "react";
 import reportIco from "..//images/report.svg";
 import calculosIco from "..//images/calculos.svg";
 import form_indice from "../images/form_indice.svg";
+import lupa_menu from "../images/lupa_menu.svg"
+
+
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -23,6 +26,13 @@ export const Menu = () => {
             <h1>Herramientas Notario</h1>
           </div>
           <div className="card__body card--menu__body">
+          <div className="card--menu__menu-item">
+              <Link to="/buscador">
+                <img src={lupa_menu} alt="buscador"></img>
+              </Link>
+              <span>Buscar</span>
+            </div>
+
             <div className="card--menu__menu-item">
               <Link to="/indice">
                 {" "}

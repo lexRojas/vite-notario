@@ -15,6 +15,7 @@ import Calculos from './pages/Calculos'
 import { Menu } from './pages/Menu';
 import { ErrorAcceso } from './pages/ErrorAcceso';
 import Formulario from './pages/FormIndice';
+import { Buscador } from './pages/Buscador';
 
 
 const router = createBrowserRouter(
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
     { path: "/calculos", element: <Calculos/> },
     { path: "/form_indice", element: <Formulario/>},
     { path: "/error", element: <ErrorAcceso/> },
+    { path: "/buscador", element: <Buscador/> },
   ]
 );
 

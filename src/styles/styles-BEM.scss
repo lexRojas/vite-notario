@@ -7,7 +7,7 @@ $color_text_label: darkblue;
 $color_text_label_hover: rgb(255, 238, 0);
 
 $color_text_h1: darkred;
-$color_background_card: rgb(231, 225, 213) ;
+$color_background_card: rgb(231, 225, 213);
 $color_button: rgb(20, 20, 59);
 $color_button_texto: white;
 $color_button_hover: rgb(39, 39, 95);
@@ -37,12 +37,12 @@ $color_border_table: rgb(80, 80, 80);
   }
 }
 
-//Bases de estilos 
+//Bases de estilos
 
 %card_base {
-  width: clamp(10dvw,30dvw,90dvw);
+  width: clamp(10dvw, 30dvw, 90dvw);
   display: flex;
-  
+
   flex-direction: column;
   margin: auto;
   background: $color_background_card;
@@ -55,15 +55,11 @@ $color_border_table: rgb(80, 80, 80);
   overflow: auto;
 }
 
-
 @media (width <= 400px) {
   %card_base {
-    width: 100%
-    
+    width: 100%;
   }
-    
 }
-
 
 %input-group-base {
   display: flex;
@@ -72,7 +68,7 @@ $color_border_table: rgb(80, 80, 80);
   color: $color_text_label;
   flex-direction: column;
   flex-basis: 50px;
-  
+
   padding: 0.2rem 1rem;
 }
 
@@ -254,9 +250,10 @@ BLOQUE: CARD
     &__header {
       img {
         margin: auto;
-        width: clamp(10%,35%,50%);
+        width: clamp(10%, 35%, 50%);
         animation: heartbeat 1s infinite;
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+        // box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+        filter: drop-shadow(0 0 0.75rem crimson);
       }
     }
 
@@ -300,13 +297,11 @@ BLOQUE: CARD
   }
 
   &--form-indice {
-    
     max-width: 35rem;
     overflow-y: auto;
 
     &__body {
       &__form-layout {
-        
         display: grid;
         grid-template-columns: repeat(3, minmax(50px, 1fr));
         gap: 2px 2px;
@@ -406,17 +401,32 @@ BLOQUE: CARD
           grid-area: entero;
         }
 
-        .tomo_reg{
-          grid-area: tomo_reg;  
-        } 
-        .asiento_reg{
-          grid-area: asiento_reg;  
+        .tomo_reg {
+          grid-area: tomo_reg;
+        }
+        .asiento_reg {
+          grid-area: asiento_reg;
         }
 
         .form__errorLabel {
           color: red;
           margin-top: 2px;
         }
+      }
+    }
+  }
+  &--buscador {
+
+    &__body{
+      max-height: 60dvh;
+      overflow-y: scroll;
+    }
+
+    &__input-group {
+      @extend %input-group-base;
+      width: 10rem;
+      input {
+        @extend %input-base;
       }
     }
   }
@@ -481,8 +491,6 @@ BLOQUE: REPORTE
       width: 200px;
     }
   }
-        
-
 }
 
 /*-------------------------
@@ -542,7 +550,7 @@ BLOQUE: TABLA DE VER TARIFAS
   border-collapse: collapse;
   margin: 1rem auto;
   padding: 0;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden; /* Ensures that the table corners are properly rounded */
   border: 1px solid $color_border_table;
 
@@ -591,7 +599,6 @@ BLOQUE: TABLA DE VER TARIFAS
     margin: auto;
   }
 }
-
 
 @media print {
   body {
