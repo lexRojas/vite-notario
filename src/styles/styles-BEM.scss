@@ -21,17 +21,22 @@ $color_border_table: rgb(80, 80, 80);
 //Animaciones
 
 @keyframes heartbeat {
+
   0%,
   100% {
     transform: scale(0.9);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9); /* Halo inicial */
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+    /* Halo inicial */
   }
+
   5% {
     transform: scale(0.92);
   }
+
   17% {
     transform: scale(0.9);
   }
+
   25% {
     transform: scale(0.96);
   }
@@ -55,7 +60,7 @@ $color_border_table: rgb(80, 80, 80);
   overflow: auto;
 }
 
-@media (width <= 400px) {
+@media (width <=400px) {
   %card_base {
     width: 100%;
   }
@@ -173,8 +178,10 @@ BLOQUE: CARD
 -------------------------*/
 .card {
   @extend %card_base;
+
   &__input-group {
     @extend %input-group-base;
+
     input {
       @extend %input-base;
     }
@@ -199,6 +206,7 @@ BLOQUE: CARD
         margin-left: 0;
         width: 80%;
       }
+
       button {
         background-color: $color_button;
         color: $color_text_label;
@@ -225,6 +233,7 @@ BLOQUE: CARD
 
   &__header {
     @extend %card_header-base;
+
     &--message {
       flex-direction: column;
     }
@@ -232,6 +241,7 @@ BLOQUE: CARD
 
   &__body {
     @extend %card_body-base;
+
     &--calculator {
       flex-direction: column;
     }
@@ -239,13 +249,31 @@ BLOQUE: CARD
 
   &__button-panel {
     @extend %card__button-panel-base;
+
     &__button {
       @extend %card__button-base;
     }
   }
 
+  &__button-panel--left {
+    @extend %card__button-panel-base;
+    justify-content: left;
+    margin: 0;
+    margin-left: 1rem;
+    padding: 0;
+
+    button {
+      @extend %card__button-base;
+      min-height: 2rem;
+      max-width:  7rem;
+      border-radius: 10px;
+    }
+  }
+
+
   // MODIFICADOR --LOGIN
   &--login {
+
     // max-height: clamp(50dvh,70dvh,100dvh);
     &__header {
       img {
@@ -270,15 +298,18 @@ BLOQUE: CARD
     &__body {
       max-width: 40rem;
     }
+
     &__menu-item {
       width: 7rem;
       height: 7rem;
       margin: 0.6rem;
       text-align: center;
+
       span {
         color: $color_text_label;
         font-weight: bold;
       }
+
       img {
         width: 6rem;
         height: 6rem;
@@ -289,6 +320,7 @@ BLOQUE: CARD
       }
     }
   }
+
   // MODIFICADOR --MENU
 
   &--calculator {
@@ -385,6 +417,7 @@ BLOQUE: CARD
         .hora {
           grid-area: hora;
         }
+
         .minutos {
           grid-area: minutos;
         }
@@ -404,6 +437,7 @@ BLOQUE: CARD
         .tomo_reg {
           grid-area: tomo_reg;
         }
+
         .asiento_reg {
           grid-area: asiento_reg;
         }
@@ -415,9 +449,10 @@ BLOQUE: CARD
       }
     }
   }
+
   &--buscador {
 
-    &__body{
+    &__body {
       max-height: 60dvh;
       overflow-y: scroll;
     }
@@ -425,6 +460,7 @@ BLOQUE: CARD
     &__input-group {
       @extend %input-group-base;
       width: 10rem;
+
       input {
         @extend %input-base;
       }
@@ -450,6 +486,7 @@ BLOQUE: REPORTE
     right: 65px;
     width: 90px;
     height: 100px;
+
     img {
       height: 95%;
     }
@@ -458,14 +495,17 @@ BLOQUE: REPORTE
   &__encabezado {
     text-align: center;
     padding-top: 30px;
+
     h2 {
       font-size: large;
     }
+
     div {
       display: flex;
       width: 90%;
       margin: auto;
       justify-content: space-between;
+
       p {
         display: inline;
         width: 100px;
@@ -480,11 +520,13 @@ BLOQUE: REPORTE
     width: 90%;
     flex-direction: row;
     justify-content: flex-end;
+
     .firmas {
       display: block;
       width: 200px;
       text-align: center;
     }
+
     .linea {
       background-color: #000;
       height: 2px;
@@ -513,6 +555,7 @@ BLOQUE: TABLA DEL INDICE REPORTE
     border: 1px solid #000;
     border-collapse: collapse;
   }
+
   td {
     text-align: center;
     vertical-align: middle;
@@ -551,7 +594,8 @@ BLOQUE: TABLA DE VER TARIFAS
   margin: 1rem auto;
   padding: 0;
   border-radius: 4px;
-  overflow: hidden; /* Ensures that the table corners are properly rounded */
+  overflow: hidden;
+  /* Ensures that the table corners are properly rounded */
   border: 1px solid $color_border_table;
 
   thead {
@@ -608,9 +652,11 @@ BLOQUE: TABLA DE VER TARIFAS
   footer {
     display: none;
   }
+
   h1 {
     font-size: medium;
   }
+
   h2 {
     font-size: smaller;
   }

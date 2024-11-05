@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Filtro from "../components/Calculos/Filtro";
 import { TablaTarifas } from "../components/Calculos/TablaTarifas";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+import { converPDF } from "../tools/converPDF";
+
 
 const Calculos = () => {
   const navegar = useNavigate();
@@ -13,6 +16,9 @@ const Calculos = () => {
   const [monto, setMonto] = useState(0);
   const [calcular_flag, setCalcular_Flag] = useState(false);
   const [registros, setRegistros] = useState(null);
+
+
+  const contenedor = useRef();
 
   const calcular = () => {
     setCalcular_Flag(true);
@@ -42,9 +48,19 @@ const Calculos = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calcular]);
 
+
+  const exportar = ()=>{
+
+
+    
+    converPDF(contenedor, {unida:"mm",ancho:110,alto:190}) 
+
+  }
+
+
   return (
-    <div className="container">
-      <div className="card card--calculator">
+    <div className="container" >
+      <div className="card card--calculator" ref={contenedor}>
         <div className="card__header">
           <h1>Calculadora Notarial</h1>
         </div>
@@ -52,6 +68,11 @@ const Calculos = () => {
           <Filtro setId_acto={setId_acto} setMonto={setMonto} />
           {registros ? <TablaTarifas registros={registros} /> : <></>}
         </div>
+        {registros ? 
+        <div className="card__button-panel--left">
+          <button onClick = {exportar} className="card__button-panel__button">Exportar PDF</button>
+        </div>
+        :  <></>}
         <div className="card__button-panel">
           <button className="card__button-panel__button" onClick={calcular}>
             {" "}

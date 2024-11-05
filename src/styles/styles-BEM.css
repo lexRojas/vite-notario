@@ -1,7 +1,8 @@
 @keyframes heartbeat {
   0%, 100% {
     transform: scale(0.9);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9); /* Halo inicial */
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9);
+    /* Halo inicial */
   }
   5% {
     transform: scale(0.92);
@@ -76,7 +77,7 @@
   max-width: 100%;
 }
 
-.card__button-panel {
+.card__button-panel--left, .card__button-panel {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -86,7 +87,7 @@
   gap: 0.5rem;
 }
 
-.card__button-panel__button {
+.card__button-panel--left button, .card__button-panel__button {
   flex-grow: 1;
   flex-shrink: 1;
   margin: 5px 0px;
@@ -96,7 +97,7 @@
   color: white;
   min-height: 4rem;
 }
-.card__button-panel__button:hover {
+.card__button-panel--left button:hover, .card__button-panel__button:hover {
   background-color: rgb(39, 39, 95);
   color: rgb(255, 238, 0);
   font-size: 110%;
@@ -175,6 +176,17 @@ BLOQUE: CARD
 }
 .card__body--calculator {
   flex-direction: column;
+}
+.card__button-panel--left {
+  justify-content: left;
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0;
+}
+.card__button-panel--left button {
+  min-height: 2rem;
+  max-width: 7rem;
+  border-radius: 10px;
 }
 .card--login__header img {
   margin: auto;
@@ -412,7 +424,8 @@ BLOQUE: TABLA DE VER TARIFAS
   margin: 1rem auto;
   padding: 0;
   border-radius: 4px;
-  overflow: hidden; /* Ensures that the table corners are properly rounded */
+  overflow: hidden;
+  /* Ensures that the table corners are properly rounded */
   border: 1px solid rgb(80, 80, 80);
 }
 .table thead {
