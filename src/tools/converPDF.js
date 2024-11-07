@@ -87,8 +87,10 @@ export const sharePDF = async (component, page) => {
     navigator.canShare &&
     navigator.canShare({ files: [new File([], "test.png")] })
   ) {
+
+
     try {
-      html2canvas(input, { scale: 2 }).then(
+      html2canvas(input, { scale: 1 , useCORS:true}).then(
         async (canvas) => {
           const pdf = new jsPDF({
             orientation: "portrait", // "portrait" o "landscape"
@@ -99,8 +101,9 @@ export const sharePDF = async (component, page) => {
           const xOffset = 5;
           const yOffset = 5;
 
-          const imgData = canvas.toDataURL("image/png");
+          const imgData = canvas.toDataURL("image/png",1.0);
 
+          
           pdf.addImage(imgData, "PNG", xOffset, yOffset);
 
           // esta corriendo mi web en un MOVIL
