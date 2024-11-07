@@ -88,7 +88,7 @@ export const sharePDF = async (component, page) => {
     navigator.canShare({ files: [new File([], "test.png")] })
   ) {
     try {
-      html2canvas(input, { scale: 1 }).then(async (canvas) => {
+      html2canvas(input, { scale: 2, width: input.scrollWidth, height: input.scrollHeight}).then(async (canvas) => {
         const pdf = new jsPDF({
           orientation: "portrait", // "portrait" o "landscape"
           unit: unidad, // "pt", "mm", "cm", "in"
