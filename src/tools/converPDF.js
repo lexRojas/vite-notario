@@ -44,3 +44,38 @@ export const converDIV_to_img_to_whatsap = (component) => {
     window.open(whatsappURL, "_blank");
   });
 };
+
+export const shareImage = async (component) => {
+  alert("estamos adentro...");
+
+  const input = component.current;
+  if (
+    navigator.share &&
+    navigator.canShare &&
+    navigator.canShare({ files: [new File([], "test.png")] })
+  ) {
+    try {
+      html2canvas(input, { scale: 1 }).then(async (canvas) => {
+        canvas.toBlob(async (blob) => {
+          const file = new File([blob], "imagen-compartida.png", {
+            type: blob.type,
+          });
+
+          await navigator.share({
+            files: [file],
+            title: "Compartir Imagen",
+            text: "Mira esta imagen",
+          });
+        });
+      });
+
+      console.log("Imagen compartida exitosamente");
+    } catch (error) {
+      console.error("Error al compartir la imagen:", error);
+    }
+  } else {
+    alert(
+      "La función de compartir archivos no es compatible con este navegador."
+    );
+  }
+};
