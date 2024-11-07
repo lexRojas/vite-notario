@@ -4,7 +4,7 @@ import { TablaTarifas } from "../components/Calculos/TablaTarifas";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import { converDIV_to_img_to_whatsap, converPDF, shareImage } from "../tools/converPDF";
+import { converDIV_to_img_to_whatsap, converPDF, shareImage, sharePDF } from "../tools/converPDF";
 
 
 const Calculos = () => {
@@ -55,8 +55,8 @@ const Calculos = () => {
     
     // converPDF(contenedor, {unida:"mm",ancho:110,alto:190}) 
 
-    alert("vamos a llamar ... ")
-    shareImage(contenedor)
+//    shareImage(contenedor)
+      sharePDF(contenedor, {unida:"mm",ancho:110,alto:190}) 
     
 
   }

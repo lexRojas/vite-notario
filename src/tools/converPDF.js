@@ -46,8 +46,6 @@ export const converDIV_to_img_to_whatsap = (component) => {
 };
 
 export const shareImage = async (component) => {
-  alert("estamos adentro...");
-
   const input = component.current;
   if (
     navigator.share &&
@@ -70,6 +68,52 @@ export const shareImage = async (component) => {
       });
 
       console.log("Imagen compartida exitosamente");
+    } catch (error) {
+      console.error("Error al compartir la imagen:", error);
+    }
+  } else {
+    alert(
+      "La función de compartir archivos no es compatible con este navegador."
+    );
+  }
+};
+
+export const sharePDF = async (component, page) => {
+  const { unidad, ancho, alto } = page;
+  const input = component.current;
+
+  if (
+    navigator.share &&
+    navigator.canShare &&
+    navigator.canShare({ files: [new File([], "test.png")] })
+  ) {
+    try {
+      html2canvas(input, { scale: 1 }).then(async (canvas) => {
+        const pdf = new jsPDF({
+          orientation: "portrait", // "portrait" o "landscape"
+          unit: unidad, // "pt", "mm", "cm", "in"
+          format: [ancho, alto], // [ancho, alto] en la unidad especificada
+        });
+
+        const xOffset = 5;
+        const yOffset = 5;
+
+        const imgData = canvas.toDataURL("image/png");
+
+        pdf.addImage(imgData, "PNG", xOffset, yOffset);
+
+        const blob_file = pdf.output("blob");
+
+        const filePDF = new File([blob_file], "reporte.pdf", {
+          type: blob_file.type,
+        });
+
+        await navigator.share({
+          files: [filePDF],
+          title: "Compartir Imagen",
+          text: "Mira esta imagen",
+        });
+      });
     } catch (error) {
       console.error("Error al compartir la imagen:", error);
     }
