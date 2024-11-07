@@ -88,32 +88,41 @@ export const sharePDF = async (component, page) => {
     navigator.canShare({ files: [new File([], "test.png")] })
   ) {
     try {
-      html2canvas(input, { scale: 2, width: input.scrollWidth, height: input.scrollHeight}).then(async (canvas) => {
-        const pdf = new jsPDF({
-          orientation: "portrait", // "portrait" o "landscape"
-          unit: unidad, // "pt", "mm", "cm", "in"
-          format: [ancho, alto], // [ancho, alto] en la unidad especificada
-        });
+      html2canvas(input, { scale: 2 }).then(
+        async (canvas) => {
+          const pdf = new jsPDF({
+            orientation: "portrait", // "portrait" o "landscape"
+            unit: unidad, // "pt", "mm", "cm", "in"
+            format: [ancho, alto], // [ancho, alto] en la unidad especificada
+          });
 
-        const xOffset = 5;
-        const yOffset = 5;
+          const xOffset = 5;
+          const yOffset = 5;
 
-        const imgData = canvas.toDataURL("image/png");
+          const imgData = canvas.toDataURL("image/png");
 
-        pdf.addImage(imgData, "PNG", xOffset, yOffset);
+          pdf.addImage(imgData, "PNG", xOffset, yOffset);
 
-        const blob_file = pdf.output("blob");
+          // esta corriendo mi web en un MOVIL
+          if (navigator.userAgentData && navigator.userAgentData.mobile) {
+            const blob_file = pdf.output("blob");
 
-        const filePDF = new File([blob_file], "reporte.pdf", {
-          type: blob_file.type,
-        });
+            const filePDF = new File([blob_file], "reporte.pdf", {
+              type: blob_file.type,
+            });
 
-        await navigator.share({
-          files: [filePDF],
-          title: "Compartir Imagen",
-          text: "Mira esta imagen",
-        });
-      });
+            await navigator.share({
+              files: [filePDF],
+              title: "Compartir Imagen",
+              text: "Mira esta imagen",
+            });
+          } else {
+
+            // esta corriendo mi web en una PC
+            pdf.save("boleta.pdf");
+          }
+        }
+      );
     } catch (error) {
       console.error("Error al compartir la imagen:", error);
     }
