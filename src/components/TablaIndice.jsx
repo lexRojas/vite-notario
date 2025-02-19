@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const TablaIndice = (props) => {
   const [datos, setdatos] = useState([]);
-  const URL = "https://mysql-backend-8bc5e268b39e.herokuapp.com/";
+  const URL = "https://mysql-fastapi.vercel.app/";
 
   let { fechaInicio } = props;
   let { fechaFinal } = props;

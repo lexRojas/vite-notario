@@ -7,7 +7,7 @@ import { getFecha__yyMMdd, getHora, getMinutos } from "../tools/tools";
 
 const Formulario = () => {
   const navegar = useNavigate();
-  const URL = "https://mysql-backend-8bc5e268b39e.herokuapp.com/";
+  const URL = "https://mysql-fastapi.vercel.app/";
   const [verBrowser, setverBrowser] = useState(false);
   const [showMessage, setVisibleMensaje] = useState(false);
   const [editando, setEditando] = useState(false);

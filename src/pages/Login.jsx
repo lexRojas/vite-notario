@@ -16,7 +16,7 @@ export const Login = () => {
 
   const get_usuario = async (login, password) => {
     await axios
-      .get("https://mysql-backend-8bc5e268b39e.herokuapp.com/users_login", {
+      .get("https://mysql-fastapi.vercel.app/users_login", {
         params: { idlogin: login },
       })
       .then((res) => {

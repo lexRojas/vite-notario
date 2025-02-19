@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const TablaBuscador = (props) => {
   const [datos, setdatos] = useState([]);
-  const URL = "https://mysql-backend-8bc5e268b39e.herokuapp.com/";
+  const URL = "https://mysql-fastapi.vercel.app/";
 
   const {escritura, tomo, asiento} = props
 

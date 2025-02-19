@@ -10,7 +10,7 @@ import { converDIV_to_img_to_whatsap, converPDF, shareImage, sharePDF } from "..
 const Calculos = () => {
   const navegar = useNavigate();
 
-  const URL = "https://mysql-backend-8bc5e268b39e.herokuapp.com/";
+  const URL = "https://mysql-fastapi.vercel.app/";
 
   const [id_acto, setId_acto] = useState(-1);
   const [monto, setMonto] = useState(0);

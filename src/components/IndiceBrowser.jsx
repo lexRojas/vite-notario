@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/modalPanel.css";
 
@@ -6,7 +6,7 @@ export const IndiceBrowser = (props) => {
   const { setverBrowser, loadRecord, setEditando, fijarValoresPorDefecto } = props;
 
   const [datos, setdatos] = useState([]);
-  const URL = "https://mysql-backend-8bc5e268b39e.herokuapp.com/";
+  const URL = "https://mysql-fastapi.vercel.app/";
   const [selectedRow, setSelectedRow] = useState(null);
 
   useEffect(() => {
